@@ -1,0 +1,191 @@
+<style>
+    .menu-container {
+    padding-top: 80px;
+}
+
+.menu-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  justify-content: center;
+  margin-left: 15px;
+
+}
+
+.type-bar {
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #371f10;
+  border-radius: 100px;
+  background-color: #90643972;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  height: 90px;
+  width: 150px;
+}
+
+.menu-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.dish-item {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.741);
+}
+
+.dish-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.dish-item h3 {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.dish-item p {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.dish-item span {
+    display: block;
+    margin-top: 10px;
+    font-size: 20px;}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  
+    .menu-list {
+    padding-left: 13px;
+
+    }
+
+  .dish-item {
+    width: 250px;
+    
+    }
+  .menu-title{
+    flex-direction: column;
+    gap: 15px;
+    font-size: 20px;
+  }
+  .menu-list{
+    justify-content: flex-start;
+
+  }
+  .type-bar {
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #371f10;
+  border-radius: 100px;
+  background-color: #90643972;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  height: 70px;
+  width: 100px;
+}
+}
+
+@media (device-width: 360px) and (device-height: 740px),
+       (device-width: 280px) and (device-height: 653px) {
+        .dish-item {
+    width: 200px;}
+
+    
+}
+@media (device-width: 375px) and (device-height: 667px) {
+        .dish-item {
+    width: 220px;}
+
+    .dish-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+}
+
+@media (device-width: 540px) and (device-height: 720px) {
+        .dish-item {
+    width: 250px;
+margin-left: 50px;}
+
+    .dish-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+}
+
+
+@media (device-width: 280px) and (device-height: 653px),
+       (device-width: 600px) and (device-height: 840px) {
+        .dish-item {
+    width: 170px;}
+    .menu-title {
+    font-size: 13px;
+  }
+  .type-bar {
+
+  height: 44px;
+  width: 80px;
+}
+       }
+</style>
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<div class="menu-container">
+
+    <div class="menu-title">
+        <div><br>
+            <h5>Покажи:</h5>
+            <div class="type-bar">
+                <a href="{% url 'menu' %}">Всички храни</a>
+            </div>
+            
+        </div><br>
+    
+        {% for type in types %}
+        <div class="type-bar">
+            <a href="{% url 'menu' %}?q={{type.name}}">{{type.name}}</a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <ul class="menu-list">
+        {% for dish in dishes %}
+            <li>
+                <div class="dish-item">
+                    <a href="{% url 'dishinfo' dish.id %}">
+                        <img style="max-height: 160px;" src="http://localhost:8000/{{dish.picture}}"/>
+                        <h3>{{dish.title}}</h3>
+                        <span>{{dish.price}}лв</span>
+                    </a>
+                </div>
+            </li>
+            
+        {% endfor %}
+        
+    </ul>
+    
+</div>
+{% endblock content %}

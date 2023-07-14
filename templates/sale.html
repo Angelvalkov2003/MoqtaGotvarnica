@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+    .home-container {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-top: 100px;
+    }
+
+    .sales {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+
+    }
+
+    
+
+    .sales > div {
+        flex: 0 0 300px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.741);
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }   
+
+    .sales > div a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    .sales > div img {
+        max-width: 100%;
+        height: 200px;
+        
+        object-fit: cover;
+    }
+
+    .sales > div h2 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .flex-container {
+        display: flex;
+        align-items: center;
+        color: red;
+        justify-content: center;
+    }
+
+    .strike-through {
+        text-decoration: line-through;
+    }
+</style>
+<div class="home-container">
+    <div class="sales">
+        {% for sale in sales %}
+            <div>
+                <a href="{% url 'saleinfo' sale.id %}">
+                   
+                    <img src="http://localhost:8000/{{sale.dish.picture}}" alt="{{sale.dish.title}}">
+                    
+                    
+                    <h2>{{sale.dish.title}}</h2>
+                    <div class="flex-container">
+                        <h2 class="strike-through">{{ sale.dish.price }}  </h2>
+                        <h2 style="font-size: 25px; padding: 10px;"> {{ sale.price }}</h2>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

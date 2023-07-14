@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<style>
+
+.image-with-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+
+}
+
+    @media screen and (max-width: 600px) {
+        
+    }
+    
+    
+</style>
+
+<div class="row">
+    <div class="column">
+        <a href="{% url 'menu' %}?q=cooked">
+            <img src="http://localhost:8000/files/images/cooked.jpg" class="image-with-shadow" />
+        </a>
+        <a href="{% url 'menu' %}?q=soups">
+            <img src="http://localhost:8000/files/images/soups.jpg" class="image-with-shadow" />
+        </a>
+    </div>
+    <div class="column">
+        <a href="{% url 'menu' %}?q=salads">
+            <img src="http://localhost:8000/files/images/salads.jpg" class="image-with-shadow" />
+        </a>
+    </div>
+    <div class="column">
+        <a href="{% url 'menu' %}?q=desserts">
+            <img src="http://localhost:8000/files/images/desserts.jpg" class="image-with-shadow" />
+        </a>
+        <a href="{% url 'menu' %}?q=breakfast">
+            <img src="http://localhost:8000/files/images/breakfast.jpg" class="image-with-shadow" />
+        </a>
+    </div>
+</div>
+{% endblock content %}

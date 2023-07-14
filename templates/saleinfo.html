@@ -1,0 +1,112 @@
+
+
+
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    
+    .dish-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px;
+        text-align: center;
+        padding-top: 140px;
+    }   
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .image-container {
+        margin-bottom: 20px;
+    }
+
+    .dish-container img {
+        max-width: 800px;
+        height: auto;
+        width: 100%;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+        margin-bottom: 30px;
+    }
+
+    .param {
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        overflow-wrap: break-word; /* Added property to wrap long words */
+        max-width: 40%;
+
+    }
+    .headshot {
+        flex-shrink: 0;
+        margin: 20px;
+        border-radius: 30%;
+        border: calc(8px + 0.2vw) solid transparent;
+        background-origin: border-box;
+        background-size: cover;
+        box-sizing: border-box;
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+        background-color:#d9af74;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    p {
+        font-size: 16px;
+        color: #222121;
+        margin: 0;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+        h1 {
+            font-size: 20px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        .param {
+            padding: 10px;
+            max-width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        .param {
+            max-width: 90%;
+        }
+    }
+</style>
+
+<div class="dish-container">
+    <div>
+        
+        <div>
+            <img src="http://localhost:8000/{{ sale.dish.picture }}"/>
+        </div>
+    </div>
+    <div class="param headshot">
+        <h1 style="font-size: 40px; margin-top: 0; margin-bottom: 20px;">{{ sale.dish.title }}</h1>
+        <h3>{{ sale.dish.weight}} грама</h3><br>
+
+        <h3 style="text-decoration: line-through; color:rgb(107, 15, 15);">{{ sale.dish.price }}лв.</h3>
+        <h3 style="font-size: 30px;">{{sale.price}}лв</h3>
+
+        <p>описание: {{ sale.dish.description }}</p><br>
+    </div>
+</div>
+{% endblock %}
