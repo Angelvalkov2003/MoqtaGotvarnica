@@ -96,6 +96,61 @@
     animation-name: fade;
     animation-duration: 1.5s;
     }
+    .home-info{
+      margin-left: 33%;
+      margin-top: 50px;
+      width: 500px;
+      text-align: center;
+      display: flex;
+        justify-content: center;
+        border-style: inset;        border-width: 10px;
+        border-color: #764d24;
+        border-radius: 50px 20px 30px 40px;
+        background-color: beige;
+        padding: 20px;
+    }
+    @media screen and (min-width: 900px) {
+      .home-info{
+        width: 400px;
+        margin-left: 860px;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .home-info{
+        width: 300px;
+        margin: 50px;
+
+      }
+    }
+
+    @media (device-width: 912px) and (device-height: 1368px) {
+        .home-info{
+       margin: 0;
+       margin-left: 270px;
+
+      }
+    }
+    @media (device-width: 360px) and (device-height: 740px),
+       (device-width: 280px) and (device-height: 653px) {
+        .home-info{
+        margin: 35px;
+
+      }
+    }
+    @media (device-width: 360px) and (device-height: 740px){
+        .home-info{
+        width: 280px;
+
+      }
+
+      }
+      @media (device-width: 280px) and (device-height: 653px)
+      {
+        .home-info{
+        width: 220px;
+
+      }
+      }
 
     @keyframes fade {
     from {opacity: .4}
@@ -103,7 +158,7 @@
     }
 </style>
 <!-- Slideshow container -->
-<div class="slideshow-container">
+  <div class="slideshow-container">
 
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
@@ -136,7 +191,10 @@
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
   </div>
-
+<div class="home-info"><p>Очакваме ви в ресторанта "Моята готварница", където ще се насладите на изключителна храна, превъзходно обслужване и незабравимо преживяване. Разнообразието от нашите ястия е вдъхновено от традиционната кухня, приготвена със съвременно усещане и внимание към детайла.</p>
+</div>
+  
+{% include 'footer.html' %}
 <script>
     let slideIndex = 1;
 showSlides(slideIndex);
